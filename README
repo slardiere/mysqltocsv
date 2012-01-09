@@ -1,0 +1,14 @@
+--host=host_name, -h host_name
+--port=port_num, -P port_num
+--socket=path, -S path
+--user=user_name, -u user_name
+--password[=password], -p[password]
+--database=db_name, -D db_name
+--debug[=debug_options], -# [debug_options]
+--execute=statement, -e statement
+
+--fields-enclosed-by=string
+--fields-escaped-by
+--fields-optionally-enclosed-by=string
+--fields-terminated-by=string
+--lines-terminated-by=string
