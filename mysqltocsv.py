@@ -38,6 +38,11 @@ class MySQLtoCSV:
 
         self.conn = None 
         
+        # Read Query from stdin
+        if self.query == None:
+            self.query = sys.stdin.read()
+
+
     def mysqltocsv(self):
 
         try:
@@ -49,8 +54,13 @@ class MySQLtoCSV:
             
         cursor = self.conn.cursor ()
 
-        tabledata = csv.writer( sys.stdout , delimiter=self.delimiter, lineterminator = self.lineterminator, 
-                                quotechar = self.quotechar, quoting = self.quoting )
+        try:
+            tabledata = csv.writer( sys.stdout , delimiter=self.delimiter, lineterminator = self.lineterminator, 
+                                    quotechar = self.quotechar, quoting = self.quoting )
+        except TypeError as err:  
+            print "ERROR : CSV Writer :", err 
+            exit( 3 )
+
         try:
             cursor.execute ( self.query )
             while (1):
@@ -60,7 +70,7 @@ class MySQLtoCSV:
                 tabledata.writerow ( row ) 
         except (TypeError, MySQLdb.ProgrammingError) as err:
             print "ERROR : MySQL Query :", err
-            exit( 3 )
+            exit( 4 )
 
 
         cursor.close ()
