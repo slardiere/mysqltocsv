@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     parser = OptionParser()
     parser.add_option("--host", "-H", dest="host_name", default="localhost" , help="MySQL Hostname")
-    parser.add_option("--port", "-P", dest="port_num", default=3306, help="MySQL Port")
+    parser.add_option("--port", "-P", dest="port_num", default=3306, help="MySQL Port", type="int")
     parser.add_option("--socket", "-S", dest="path", help="MySQL Socket")
     parser.add_option("--user", "-u", dest="user_name", help="MySQL Username")
     parser.add_option("--password", "-p", dest="password" , help="MySQL Password")
