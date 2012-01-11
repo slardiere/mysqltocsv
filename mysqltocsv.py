@@ -68,7 +68,7 @@ class MySQLtoCSV:
                 if row == None:
                     break
                 tabledata.writerow ( row ) 
-        except (TypeError, MySQLdb.ProgrammingError) as err:
+        except (TypeError, MySQLdb.ProgrammingError, MySQLdb.OperationalError) as err:
             print "ERROR : MySQL Query :", err
             exit( 4 )
 
